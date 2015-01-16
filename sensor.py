@@ -31,7 +31,7 @@ while True:
 	except urllib2.HTTPError, e:
 		print e.hdrs
 	
-	values = { 'data': { temperature : temp, "timestamp":curTimeStamp } }
+	values = { 'data': { 'temperature' : temp, 'timestamp':curTimeStamp } }
 	# Send "PATCH" request to update properties
 	request = urllib2.Request('https://api.appbase.io/tempmonitor/v2/pi/temperature/'+curTimeStamp+'/~properties', data=json.dumps(values), headers=headers)
 	request.get_method = lambda: 'PATCH'
