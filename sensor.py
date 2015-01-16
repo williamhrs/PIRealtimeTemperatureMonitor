@@ -12,7 +12,6 @@ while True:
     print temp
     time.sleep(5.0)
 	values = { 'data': { 'temp' : temp, 'timestamp' : timestamp() } }
-
 	# REST API uses an additional header - "Appbase-Secret"
 	headers = {
 	  'Content-Type': 'application/json',
