@@ -26,7 +26,7 @@ while True:
 		print x.read()
 		print "leitura"
 	except urllib2.HTTPError, e:
-		print e.hdrs
+		print e
 	
 	values = { 'data': { 'temperature' : temp, 'timestamp':curTimeStamp } }
 	# Send "PATCH" request to update properties
@@ -37,6 +37,6 @@ while True:
 		print x.read()
 		print "leitura2"
 	except urllib2.HTTPError, e:
-		print e.hdrs
+		print e
 	time.sleep(5.0)
 
