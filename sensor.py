@@ -18,14 +18,14 @@ while True:
 	  'Appbase-Secret': '9d7f14bc1ecabc8b47ed176e4e1772cd'
 	}
 
-	values = { 'data': { 'temperature' : temp, 'timestamp':curTimeStamp } }
+	values = { 'data': { 'temperature' : temp, 'nowtimestamp':curTimeStamp } }
 	# Send "PATCH" request to update properties
 	request = urllib2.Request('https://api.appbase.io/tempmonitor/v2/pi/temperature/'+curTimeStamp+'/~properties', data=json.dumps(values), headers=headers)
 	request.get_method = lambda: 'PATCH'
 	try:
 		x = urllib2.urlopen(request)
 		print x.read()
-		print "leitura2"
+		print "leitura1"
 	except urllib2.HTTPError, e:
 		print e
 	
@@ -37,7 +37,7 @@ while True:
 	try:
 		x = urllib2.urlopen(request)
 		print x.read()
-		print "leitura"
+		print "leitura2"
 	except urllib2.HTTPError, e:
 		print e
 
