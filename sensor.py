@@ -4,10 +4,6 @@ import json
 import Adafruit_MCP9808.MCP9808 as MCP9808
 sensor = MCP9808.MCP9808()
 
-
-
-#httplib.HTTPSConnection.debuglevel = 1
-
 sensor.begin()
 
 timestamp = lambda: int(round(time.time() * 1000))
@@ -28,6 +24,7 @@ while True:
 	try:
 		x = urllib2.urlopen(request)
 		print x.read()
+		print "leitura"
 	except urllib2.HTTPError, e:
 		print e.hdrs
 	
@@ -38,6 +35,7 @@ while True:
 	try:
 		x = urllib2.urlopen(request)
 		print x.read()
+		print "leitura2"
 	except urllib2.HTTPError, e:
 		print e.hdrs
 	time.sleep(5.0)
