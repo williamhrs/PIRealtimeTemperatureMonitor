@@ -1,7 +1,7 @@
 import time
 import urllib2 
 import json
-#import Adafruit_MCP9808.MCP9808 as MCP9808
+import Adafruit_MCP9808.MCP9808 as MCP9808
 sensor = MCP9808.MCP9808()
 
 
