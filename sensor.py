@@ -1,12 +1,15 @@
 import time
 from urllib2 import Request, urlopen
-import Adafruit_MCP9808.MCP9808 as MCP9808
-sensor = MCP9808.MCP9808()
+import json
+#import Adafruit_MCP9808.MCP9808 as MCP9808
+#sensor = MCP9808.MCP9808()
 
-sensor.begin()
+#sensor.begin()
 
 timestamp = lambda: int(round(time.time() * 1000))
-temp = sensor.readTempC()
+
+#temp = sensor.readTempC()
+temp = 2
 values = { 'data': { 'temp' : temp, 'timestamp' : timestamp() } }
 # REST API uses an additional header - "Appbase-Secret"
 headers = {
@@ -14,11 +17,11 @@ headers = {
   'Appbase-Secret': '9d7f14bc1ecabc8b47ed176e4e1772cd'
 }
                               
-
 # Send "PATCH" request to create or update a resource.
-request = Request('https://api.appbase.io/tempmonitor/v2/pi/temperature', data=values, headers=headers)
+request = Request('https://api.appbase.io/tempmonitor/v2/pi/temperature', data=json.dumps(values), headers=headers)
 request.get_method = lambda: 'PATCH'
-urlopen(request).read()
+x = urlopen(request)
+print x.read()
 
 #while True:
 #    temp = sensor.readTempC()
