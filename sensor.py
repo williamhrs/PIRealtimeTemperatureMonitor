@@ -6,7 +6,7 @@ sensor = MCP9808.MCP9808()
 sensor.begin()
 
 timestamp = lambda: int(round(time.time() * 1000))
-
+temp = sensor.readTempC()
 values = { 'data': { 'temp' : temp, 'timestamp' : timestamp() } }
 # REST API uses an additional header - "Appbase-Secret"
 headers = {
