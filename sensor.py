@@ -11,7 +11,7 @@ timestamp = lambda: int(round(time.time() * 1000))
 while True:
 	temp = sensor.readTempC()
 	curTimeStamp = str(timestamp())
-	values = { 'data': { curTimeStamp : {"path":"pi/temperature/" } } }
+	values = { 'data': { curTimeStamp : {"path":"pi/temperature/"+curTimeStamp } } }
 	# REST API uses an additional header - "Appbase-Secret"
 	headers = {
 	  'Content-Type': 'application/json',
