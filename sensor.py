@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-z
 
 import time
-import urllib2 
+import urllib.request
 import json
 import Adafruit_MCP9808.MCP9808 as MCP9808
 sensor = MCP9808.MCP9808()
@@ -23,7 +23,7 @@ while True:
 
 	values = { 'data': { 'temperature' : temp, 'nowtimestamp':curTimeStamp } }
 	# Send "PATCH" request to update properties
-	request = urllib2.Request('https://api.appbase.io/tempmonitor/v2/pi/temperature/'+curTimeStamp+'/~properties', data=json.dumps(values), headers=headers)
+	request = urllib.request.Request('https://api.appbase.io/tempmonitor/v2/pi/temperature/'+curTimeStamp+'/~properties', data=json.dumps(values), headers=headers)
 	request.get_method = lambda: 'PATCH'
 	try:
 		x = urllib2.urlopen(request)
@@ -35,7 +35,7 @@ while True:
 	
 	values = { 'data': { curTimeStamp : {"path":"pi/temperature/"+curTimeStamp } } }	                              
 	# Send "PATCH" request to create an edge.
-	request = urllib2.Request('https://api.appbase.io/tempmonitor/v2/pi/temperature/~edges', data=json.dumps(values), headers=headers)
+	request = urllib.request.Request('https://api.appbase.io/tempmonitor/v2/pi/temperature/~edges', data=json.dumps(values), headers=headers)
 	request.get_method = lambda: 'PATCH'
 	try:
 		x = urllib2.urlopen(request)
