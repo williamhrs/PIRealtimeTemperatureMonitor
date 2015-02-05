@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-z
+
 import time
 import urllib2 
 import json
@@ -24,21 +27,21 @@ while True:
 	request.get_method = lambda: 'PATCH'
 	try:
 		x = urllib2.urlopen(request)
-		print x.read()
-		print "leitura1"
+		print(x.read())
+		print("leitura1")
 	except urllib2.HTTPError, e:
-		print e
+		print(e)
 	
 	
-	values = { 'data': { curTimeStamp : {"path":"pi/temperature/" } } }	                              
+	values = { 'data': { curTimeStamp : {"path":"pi/temperature/"+curTimeStamp } } }	                              
 	# Send "PATCH" request to create an edge.
 	request = urllib2.Request('https://api.appbase.io/tempmonitor/v2/pi/temperature/~edges', data=json.dumps(values), headers=headers)
 	request.get_method = lambda: 'PATCH'
 	try:
 		x = urllib2.urlopen(request)
-		print x.read()
-		print "leitura2"
+		print(x.read())
+		print("leitura2")
 	except urllib2.HTTPError, e:
-		print e
+		print(e)
 
 	time.sleep(5.0)
