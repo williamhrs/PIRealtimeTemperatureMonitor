@@ -29,7 +29,7 @@ while True:
 		x = urllib2.urlopen(request)
 		print(x.read())
 		print("leitura1")
-	except urllib2.HTTPError, e:
+	except e:
 		print(e)
 	
 	
@@ -41,7 +41,7 @@ while True:
 		x = urllib2.urlopen(request)
 		print(x.read())
 		print("leitura2")
-	except urllib2.HTTPError, e:
+	except e:
 		print(e)
 
 	time.sleep(5.0)
